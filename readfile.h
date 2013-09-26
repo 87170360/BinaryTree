@@ -1,3 +1,6 @@
+#ifndef __READFILE_LSX_
+#define __READFILE_LSX_
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -87,20 +90,9 @@ std::vector<std::string> split(std::string str,std::string pattern)
     return result;
 }
 
-struct ReadData
-{
-	ReadData(void)
-	{
-		memset(config, 0, sizeof(config) / sizeof(unsigned int));
-	}
-	unsigned int config[3];
-
-};
-
-ReadData splitToInt(std::string str,std::string pattern)
+void splitToInt(std::string str,std::string pattern, std::vector<int>& result)
 {
     std::string::size_type pos;
-    ReadData result;
     str += pattern;//扩展字符串以方便操作
     size_t size = str.size();
 
@@ -108,19 +100,17 @@ ReadData splitToInt(std::string str,std::string pattern)
     for(size_t i = 0; i < size; i++)
     {
         pos=str.find(pattern,i);
-        if(pos < size && tmp < 3)
+        if(pos < size)
         {		
             std::string s = str.substr(i, pos - i);
-            result.config[tmp++] = atoi(s.c_str());
+            result.push_back(atoi(s.c_str()));
             i = pos+pattern.size() - 1;
         }
     }
-    return result;
 }
 
-
 //parse
-std::vector<ReadData> parseInputFile(void)
+std::vector<int> parseInputFile(void)
 {
 	string filename = "data.txt";  
     ifstream fin( filename.c_str());  
@@ -130,14 +120,15 @@ std::vector<ReadData> parseInputFile(void)
         exit(-1);  
     }
 	 
-	std::vector<ReadData> result;
+	std::vector<int> result;
 	string s;  
     while(getline(fin,s))
     {    
         cout << "Read from file: " << s << endl; 
-		result.push_back(splitToInt(s, "-"));
+		splitToInt(s, "-", result);
     }
 
 	return result;
 }
 
+#endif //__READFILE_LSX_
