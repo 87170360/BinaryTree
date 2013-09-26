@@ -124,7 +124,7 @@ std::vector<int> parseInputFile(void)
 	string s;  
     while(getline(fin,s))
     {    
-        cout << "Read from file: " << s << endl; 
+       // cout << "Read from file: " << s << endl; 
 		splitToInt(s, "-", result);
     }
 

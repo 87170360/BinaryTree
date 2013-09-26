@@ -1,16 +1,22 @@
 #include <iostream>
-#include <stddef.h>
+
 #include "readfile.h"
 #include "BinaryTree.h"
 
 
 int main()
 {
-	std::vector<int> conf = parseInputFile();
-	for(std::vector<int>::const_iterator iter = conf.begin(); iter != conf.end(); ++iter)
+	INTVEC conf = parseInputFile();
+	for(INTVEC_CITER iter = conf.begin(); iter != conf.end(); ++iter)
 	{
-		std::cout << *iter << std::endl;
+		std::cout << *iter << " ";
 	}
-	std::cout << "Hello, BinaryTree!" << std::endl;
+	std::cout << std::endl;
+
+	std::cout << "Create BinaryTree!" << std::endl;
+	pNode pRoot = CreateBinaryTree(conf, 1, conf.size());
+
+	std::cout << "Print BinaryTree!" << std::endl;
+	printBinaryTree(pRoot, 0);
 	return 0; 
 }
