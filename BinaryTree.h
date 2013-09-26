@@ -47,7 +47,7 @@ void printBinaryTree(pNode p, int layer)
 	{
 		//std::cout << " ";
 	}
-	std::cout << "layer:" << layer << " value" << p->value << std::endl;
+	std::cout << "layer:" << layer << " value:" << p->value << std::endl;
 	printBinaryTree(p->left, ++layer);
 }
 
