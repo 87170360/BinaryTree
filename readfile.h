@@ -124,11 +124,9 @@ std::vector<int> parseInputFile(void)
 	string s;  
     while(getline(fin,s))
     {    
-<<<<<<< HEAD
+
        // cout << "Read from file: " << s << endl; 
-=======
         cout << "Read from file: " << s << endl; 
->>>>>>> bb51065fff721d13ac9900da1a45962d8c15a439
 		splitToInt(s, "-", result);
     }
 
