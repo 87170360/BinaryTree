@@ -15,7 +15,7 @@ int main()
 	std::cout << std::endl;
 
 	std::cout << "Create BinaryTree!" << std::endl;
-	pNode pRoot = CreateBinaryTree(conf, 1, conf.size());
+	pNode pRoot = CreateBinaryTree(conf, 0, conf.size());
 
 	std::cout << "Print BinaryTree!" << std::endl;
 	printBinaryTree(pRoot, 0);

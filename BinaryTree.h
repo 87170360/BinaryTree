@@ -29,9 +29,10 @@ pNode CreateBinaryTree(const INTVEC& vec, int i, int j)
 {
 	if(i >= j) return(NULL);
 	pNode p = new Node;
-	p->value = vec[(i + j) / 2];
-	p->left = CreateBinaryTree(vec, i, (i + j) / 2 - 1);
-	p->right = CreateBinaryTree(vec,(i + j) / 2 + 1, j);
+	p->value = vec[i];
+	std::cout << p->value << std::endl;
+	p->left = CreateBinaryTree(vec, 2 * i + 1, j);
+	p->right = CreateBinaryTree(vec, 2 * i + 2, j);
 
 	return p;
 }
@@ -44,9 +45,9 @@ void printBinaryTree(pNode p, int layer)
 
 	for(int i = 0; i < layer; ++i)
 	{
-		std::cout << " ";
+		//std::cout << " ";
 	}
-	std::cout << p->value << std::endl;
+	std::cout << "layer:" << layer << " value" << p->value << std::endl;
 	printBinaryTree(p->left, ++layer);
 }
 
