@@ -1,4 +1,5 @@
 #include <iostream>
+#include "readfile.h"
 
 #include "readfile.h"
 #include "BinaryTree.h"
